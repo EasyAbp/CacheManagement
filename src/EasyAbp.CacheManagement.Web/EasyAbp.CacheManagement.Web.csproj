@@ -36,7 +36,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\CacheManagement\CacheItems" />
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\CacheItems\CacheItem\CreateModal.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\CacheItems\CacheItem\EditModal.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\CacheItems\CacheItem\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\CacheManagement\CacheItems\CacheItem\CreateModal.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\CacheManagement\CacheItems\CacheItem\EditModal.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\CacheManagement\CacheItems\CacheItem\Index.cshtml" />
   </ItemGroup>
 
 </Project>

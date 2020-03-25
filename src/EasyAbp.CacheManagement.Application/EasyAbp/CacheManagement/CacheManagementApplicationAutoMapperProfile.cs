@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+using EasyAbp.CacheManagement.CacheItems;
+using EasyAbp.CacheManagement.CacheItems.Dtos;
+using AutoMapper;
 
 namespace EasyAbp.CacheManagement
 {
@@ -9,6 +11,8 @@ namespace EasyAbp.CacheManagement
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+            CreateMap<CacheItem, CacheItemDto>();
+            CreateMap<CreateUpdateCacheItemDto, CacheItem>(MemberList.Source);
         }
     }
 }

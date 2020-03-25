@@ -12,15 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\cs.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\en.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\pl.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\pt-BR.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\sl.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\tr.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\vi.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\zh-Hans.json" />
-    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\zh-Hant.json" />
     <EmbeddedResource Include="Localization\CacheManagement\*.json" />
     <Content Remove="Localization\CacheManagement\*.json" />
   </ItemGroup>

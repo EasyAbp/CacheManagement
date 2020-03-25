@@ -1,0 +1,46 @@
+@page
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@inherits EasyAbp.CacheManagement.Web.Pages.CacheManagementPage
+@model EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem.IndexModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["CacheItem"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:CacheItem"].Value);
+    PageLayout.Content.MenuItemName = "CacheItem";
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/CacheManagement/CacheItems/CacheItem/index.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/CacheManagement/CacheItems/CacheItem/index.css"/>
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["CacheItem"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+                <abp-button id="NewCacheItemButton"
+                            text="@L["CreateCacheItem"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="CacheItemTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["CacheItemDisplayName"]</th>
+                <th>@L["CacheItemDescription"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

@@ -8,7 +8,13 @@ namespace EasyAbp.CacheManagement.Authorization
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            //var moduleGroup = context.AddGroup(CacheManagementPermissions.GroupName, L("Permission:CacheManagement"));
+            var moduleGroup = context.AddGroup(CacheManagementPermissions.GroupName, L("Permission:CacheManagement"));
+
+            var cacheItems = moduleGroup.AddPermission(CacheManagementPermissions.CacheItems.Default, L("Permission:CacheItem"));
+            cacheItems.AddChild(CacheManagementPermissions.CacheItems.Create, L("Permission:Create"));
+            cacheItems.AddChild(CacheManagementPermissions.CacheItems.Update, L("Permission:SetRead"));
+            cacheItems.AddChild(CacheManagementPermissions.CacheItems.Delete, L("Permission:Delete"));
+            cacheItems.AddChild(CacheManagementPermissions.CacheItems.ClearCache, L("Permission:ClearCache"));
         }
 
         private static LocalizableString L(string name)

@@ -1,6 +1,15 @@
 {
   "culture": "cs",
   "texts": {
-
+    "Menu:CacheItem": "MenuCacheItem",
+    "CacheItem": "CacheItem",
+    "CacheItemFullTypeName": "CacheItemFullTypeName",
+    "CacheItemDisplayName": "CacheItemDisplayName",
+    "CacheItemDescription": "CacheItemDescription",
+    "CacheItemTenantAllowed": "CacheItemTenantAllowed",
+    "CreateCacheItem": "CreateCacheItem",
+    "EditCacheItem": "EditCacheItem",
+    "CacheItemDeletionConfirmationMessage": "Are you sure to delete the cacheitem {0}?",
+    "SuccessfullyDeleted": "Successfully deleted"
   }
 }

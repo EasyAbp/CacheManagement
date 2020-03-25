@@ -1,6 +1,8 @@
-﻿using System;
+using EasyAbp.CacheManagement.CacheItems;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace EasyAbp.CacheManagement.EntityFrameworkCore
 {
@@ -38,6 +40,13 @@ namespace EasyAbp.CacheManagement.EntityFrameworkCore
                 b.HasIndex(q => q.CreationTime);
             });
             */
+
+            builder.Entity<CacheItem>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CacheItems", options.Schema);
+                b.ConfigureByConvention(); 
+                /* Configure more properties here */
+            });
         }
     }
 }

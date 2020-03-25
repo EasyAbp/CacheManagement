@@ -1,4 +1,9 @@
 ﻿using System.Threading.Tasks;
+using EasyAbp.CacheManagement.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
+using EasyAbp.CacheManagement.Localization;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.UI.Navigation;
 
 namespace EasyAbp.CacheManagement.Web
@@ -13,11 +18,18 @@ namespace EasyAbp.CacheManagement.Web
             }
         }
 
-        private Task ConfigureMainMenu(MenuConfigurationContext context)
+        private async Task ConfigureMainMenu(MenuConfigurationContext context)
         {
-            //Add main menu items.
+            var l = context.ServiceProvider.GetRequiredService<IStringLocalizer<CacheManagementResource>>();
 
-            return Task.CompletedTask;
+            var authorizationService = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
+
+            if (await authorizationService.IsGrantedAsync(CacheManagementPermissions.CacheItems.Default))
+            {
+                context.Menu.AddItem(
+                    new ApplicationMenuItem("CacheItem", l["Menu:CacheItem"], "/CacheManagement/CacheItems/CacheItem")
+                );
+            }
         }
     }
 }

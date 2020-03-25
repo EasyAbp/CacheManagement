@@ -1,6 +1,16 @@
 {
   "culture": "zh-Hans",
   "texts": {
-    "ManageYourProfile":  "管理个人资料" 
+    "ManageYourProfile": "管理个人资料",
+    "Menu:CacheItem": "MenuCacheItem",
+    "CacheItem": "CacheItem",
+    "CacheItemFullTypeName": "CacheItemFullTypeName",
+    "CacheItemDisplayName": "CacheItemDisplayName",
+    "CacheItemDescription": "CacheItemDescription",
+    "CacheItemTenantAllowed": "CacheItemTenantAllowed",
+    "CreateCacheItem": "CreateCacheItem",
+    "EditCacheItem": "EditCacheItem",
+    "CacheItemDeletionConfirmationMessage": "Are you sure to delete the cacheitem {0}?",
+    "SuccessfullyDeleted": "Successfully deleted"
   }
 }
