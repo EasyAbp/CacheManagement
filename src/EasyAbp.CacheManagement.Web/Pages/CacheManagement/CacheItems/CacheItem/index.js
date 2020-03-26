@@ -76,4 +76,16 @@ $(function () {
         e.preventDefault();
         createModal.open();
     });
+
+    $('#ClearAllCacheButton').click(function (e) {
+        e.preventDefault();
+        abp.message.confirm(l('ClearAllCacheConfirmationMessage'), l('ClearAllCache'))
+            .done(function (accepted) {
+                if (accepted) {
+                    service.clearAll().done(function () {
+                        abp.notify.info(l('SuccessCleared'));
+                    })
+                }
+            });
+    });
 });

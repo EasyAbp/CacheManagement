@@ -28,6 +28,12 @@
                 <abp-card-title>@L["CacheItem"]</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-right">
+                @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheItems.ClearAllCache))
+                {
+                    <abp-button id="ClearAllCacheButton"
+                                text="@L["ClearAllCache"].Value"
+                                button-type="Danger"/>
+                }
                 @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheItems.Create))
                 {
                     <abp-button id="NewCacheItemButton"

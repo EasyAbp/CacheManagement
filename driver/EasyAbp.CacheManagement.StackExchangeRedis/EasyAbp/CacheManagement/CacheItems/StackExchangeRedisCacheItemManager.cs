@@ -35,7 +35,11 @@ namespace EasyAbp.CacheManagement.CacheItems
             _distributedCache = distributedCache;
             _keyNormalizer = keyNormalizer;
             _cancellationTokenProvider = cancellationTokenProvider;
-            _connectionMultiplexer = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+            
+            var options = ConfigurationOptions.Parse(configuration["Redis:Configuration"]);
+            options.AllowAdmin = true;
+            
+            _connectionMultiplexer = ConnectionMultiplexer.Connect(options);
         }
 
         public async Task<IEnumerable<string>> GetKeysAsync(CacheItem cacheItem,
