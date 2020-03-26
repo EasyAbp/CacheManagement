@@ -48,4 +48,16 @@ $(function () {
             { data: "cacheKey" },
         ]
     }));
+
+    $('#ClearAllCacheButton').click(function (e) {
+        e.preventDefault();
+        abp.message.confirm(l('ClearAllCacheConfirmationMessage'), l('ClearAllCache'))
+            .done(function (accepted) {
+                if (accepted) {
+                    service.clear({ cacheItemId: cacheItemId}).done(function () {
+                        abp.notify.info(l('SuccessCleared'));
+                    })
+                }
+            });
+    });
 });

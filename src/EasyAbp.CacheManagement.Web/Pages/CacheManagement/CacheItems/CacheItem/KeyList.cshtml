@@ -1,7 +1,10 @@
 @page
+@using EasyAbp.CacheManagement.Authorization
+@using Microsoft.AspNetCore.Authorization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @inherits EasyAbp.CacheManagement.Web.Pages.CacheManagementPage
 @model EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem.KeyListModel
+@inject IAuthorizationService Authorization
 @inject IPageLayout PageLayout
 @{
     PageLayout.Content.Title = L["CacheItemData"].Value;
@@ -29,6 +32,12 @@
                 <abp-card-title>@L["CacheItemData"] - @Model.CacheItem.DisplayName</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-right">
+                @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheItems.ClearCache))
+                {
+                    <abp-button id="ClearAllCacheButton"
+                                text="@L["ClearAllCache"].Value"
+                                button-type="Danger"/>
+                }
             </abp-column>
         </abp-row>
     </abp-card-header>
