@@ -3,9 +3,12 @@ using System.ComponentModel;
 
 namespace EasyAbp.CacheManagement.CacheItems.Dtos
 {
-    public class ClearAllCacheItemDto
+    public class CacheItemDataDto
     {
-        [DisplayName("CacheItemId")]
         public Guid CacheItemId { get; set; }
+        
+        public string CacheKey { get; set; }
+        
+        public string CacheValue { get; set; }
     }
 }

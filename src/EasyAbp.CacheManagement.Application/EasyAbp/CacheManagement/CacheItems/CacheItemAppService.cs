@@ -1,12 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyAbp.CacheManagement.Authorization;
 using EasyAbp.CacheManagement.CacheItems.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Caching;
-using Volo.Abp.MultiTenancy;
 
 namespace EasyAbp.CacheManagement.CacheItems
 {
@@ -30,25 +30,59 @@ namespace EasyAbp.CacheManagement.CacheItems
             _repository = repository;
         }
 
+        [Authorize(CacheManagementPermissions.CacheItems.Default)]
+        public async Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId)
+        {
+            var cacheItem = await _repository.GetAsync(cacheItemId);
+
+            var keys = await _cacheItemManager.GetKeysAsync(cacheItem);
+
+            return new ListResultDto<CacheItemDataDto>(
+                new List<CacheItemDataDto>(keys.Select(key => new CacheItemDataDto
+                    {CacheItemId = cacheItemId, CacheKey = key})));
+        }
+
+        [Authorize(CacheManagementPermissions.CacheItems.Default)]
+        public async Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey)
+        {
+            var cacheItem = await _repository.GetAsync(cacheItemId);
+
+            var keys = await _cacheItemManager.GetKeysAsync(cacheItem);
+
+            var key = keys.Single(key => key.Equals(cacheKey));
+
+            return new CacheItemDataDto
+            {
+                CacheItemId = cacheItemId,
+                CacheKey = cacheKey,
+                CacheValue = await _cacheItemManager.GetValueAsync(key)
+            };
+        }
+
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
-        public async Task<ClearCacheItemResultDto> ClearAsync(ClearCacheItemDto input)
+        public async Task ClearSpecificAsync(ClearSpecificCacheItemDto input)
         {
             var cacheItem = await _repository.GetAsync(input.CacheItemId);
 
             await AuthorizationService.CheckAsync(cacheItem, CacheManagementPermissions.CacheItems.ClearCache);
             
-            await _cacheItemManager.ClearAsync(cacheItem, input.CacheKey);
-            
-            return new ClearCacheItemResultDto
-            {
-                CacheItemId = cacheItem.Id,
-                Count = 1
-            };
+            await _cacheItemManager.ClearSpecificAsync(cacheItem, input.CacheKey);
         }
 
-        public async Task<ClearCacheItemResultDto> ClearAllAsync(ClearAllCacheItemDto input)
+        [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
+        public async Task ClearAsync(ClearCacheItemDto input)
         {
-            throw new NotImplementedException();
+            var cacheItem = await _repository.GetAsync(input.CacheItemId);
+
+            await AuthorizationService.CheckAsync(cacheItem, CacheManagementPermissions.CacheItems.ClearCache);
+
+            await _cacheItemManager.ClearAsync(cacheItem);
+        }
+
+        [Authorize(CacheManagementPermissions.CacheItems.ClearAllCache)]
+        public async Task ClearAllAsync()
+        {
+            await _cacheItemManager.ClearAllAsync();
         }
     }
 }

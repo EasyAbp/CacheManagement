@@ -7,13 +7,15 @@ namespace EasyAbp.CacheManagement.CacheItems
     public class CacheItem : AggregateRoot<Guid>
     {
         [NotNull]
-        public virtual string FullTypeName { get; protected set; }
+        public virtual string CacheName { get; protected set; }
      
         [NotNull]
         public virtual string DisplayName { get; protected set; }
         
         [CanBeNull]
         public virtual string Description { get; protected set; }
+        
+        public virtual bool IgnoreMultiTenancy { get; protected set; }
 
         public virtual bool TenantAllowed { get; protected set; }
 
@@ -23,15 +25,17 @@ namespace EasyAbp.CacheManagement.CacheItems
 
         public CacheItem(
             Guid id,
-            [NotNull] string fullTypeName,
+            [NotNull] string cacheName,
             [NotNull] string displayName,
             [CanBeNull] string description,
+            bool ignoreMultiTenancy,
             bool tenantAllowed
         ) :base(id)
         {
-            FullTypeName = fullTypeName;
+            CacheName = cacheName;
             DisplayName = displayName;
             Description = description;
+            IgnoreMultiTenancy = ignoreMultiTenancy;
             TenantAllowed = tenantAllowed;
         }
     }

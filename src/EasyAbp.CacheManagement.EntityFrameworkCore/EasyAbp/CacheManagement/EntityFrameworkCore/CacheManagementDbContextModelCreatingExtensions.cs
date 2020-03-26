@@ -46,6 +46,8 @@ namespace EasyAbp.CacheManagement.EntityFrameworkCore
                 b.ToTable(options.TablePrefix + "CacheItems", options.Schema);
                 b.ConfigureByConvention(); 
                 /* Configure more properties here */
+                b.Property(c => c.CacheName).IsRequired();
+                b.Property(c => c.DisplayName).IsRequired();
             });
         }
     }

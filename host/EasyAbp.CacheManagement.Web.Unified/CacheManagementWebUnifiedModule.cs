@@ -5,7 +5,10 @@ using Microsoft.Extensions.Hosting;
 using EasyAbp.CacheManagement.EntityFrameworkCore;
 using EasyAbp.CacheManagement.MultiTenancy;
 using EasyAbp.CacheManagement.Web;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -59,7 +62,8 @@ namespace EasyAbp.CacheManagement
         typeof(AbpTenantManagementApplicationModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpAspNetCoreSerilogModule)
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(CacheManagementStackExchangeRedisModule)
         )]
     public class CacheManagementWebUnifiedModule : AbpModule
     {
@@ -107,6 +111,19 @@ namespace EasyAbp.CacheManagement
             {
                 options.IsEnabled = MultiTenancyConsts.IsEnabled;
             });
+            
+            context.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["Redis:Configuration"];
+            });
+
+            if (!hostingEnvironment.IsDevelopment())
+            {
+                var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+                context.Services
+                    .AddDataProtection()
+                    .PersistKeysToStackExchangeRedis(redis, "CacheManagement-Protection-Keys");
+            }
             
             ConfigureConventionalControllers();
         }

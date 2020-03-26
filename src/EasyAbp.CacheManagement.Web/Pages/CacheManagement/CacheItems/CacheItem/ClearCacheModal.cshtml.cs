@@ -13,7 +13,6 @@ namespace EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem
         [BindProperty(SupportsGet = true)]
         public Guid CacheItemId { get; set; }
 
-        [BindProperty]
         public ClearCacheItemViewModel ViewModel { get; set; }
 
         private readonly ICacheItemAppService _service;
@@ -22,13 +21,22 @@ namespace EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem
         {
             _service = service;
         }
+
+        public async Task OnGetAsync()
+        {
+            var cacheItemDto = await _service.GetAsync(CacheItemId);
+            
+            ViewModel = new ClearCacheItemViewModel
+            {
+                DisplayName = cacheItemDto.DisplayName
+            };
+        }
         
         public async Task<IActionResult> OnPostAsync()
         {
-            await _service.ClearAsync(new ClearCacheItemDto
+            await _service.ClearAsync(new ClearCacheItemDto()
             {
                 CacheItemId = CacheItemId,
-                CacheKey = ViewModel.CacheKey
             });
             
             return NoContent();

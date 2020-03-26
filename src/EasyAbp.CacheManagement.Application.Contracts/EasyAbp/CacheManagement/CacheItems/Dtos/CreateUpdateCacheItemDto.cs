@@ -7,8 +7,8 @@ namespace EasyAbp.CacheManagement.CacheItems.Dtos
     public class CreateUpdateCacheItemDto
     {
         [Required]
-        [DisplayName("CacheItemFullTypeName")]
-        public string FullTypeName { get; set; }
+        [DisplayName("CacheItemCacheName")]
+        public string CacheName { get; set; }
 
         [Required]
         [DisplayName("CacheItemDisplayName")]
@@ -17,6 +17,9 @@ namespace EasyAbp.CacheManagement.CacheItems.Dtos
         [DisplayName("CacheItemDescription")]
         public string Description { get; set; }
 
+        [DisplayName("CacheItemIgnoreMultiTenancy")]
+        public bool IgnoreMultiTenancy { get; set; }
+        
         [DisplayName("CacheItemTenantAllowed")]
         public bool TenantAllowed { get; set; }
     }

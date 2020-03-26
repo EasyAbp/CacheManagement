@@ -1,16 +1,23 @@
 {
   "culture": "en",
   "texts": {
-    "ManageYourProfile": "Manage your profile",
     "Menu:CacheItem": "MenuCacheItem",
     "CacheItem": "CacheItem",
-    "CacheItemFullTypeName": "CacheItemFullTypeName",
+    "CacheItemCacheName": "CacheItemCacheName",
     "CacheItemDisplayName": "CacheItemDisplayName",
     "CacheItemDescription": "CacheItemDescription",
+    "CacheItemIgnoreMultiTenancy": "CacheItemIgnoreMultiTenancy",
     "CacheItemTenantAllowed": "CacheItemTenantAllowed",
+    "CacheItemCacheKey": "CacheItemCacheKey",
+    "CacheItemCacheValue": "CacheItemCacheValue",
     "CreateCacheItem": "CreateCacheItem",
     "EditCacheItem": "EditCacheItem",
     "CacheItemDeletionConfirmationMessage": "Are you sure to delete the cacheitem {0}?",
-    "SuccessfullyDeleted": "Successfully deleted"
+    "SuccessfullyDeleted": "Successfully deleted",
+    "SuccessCleared": "Successfully cleared",
+    "ClearCache": "ClearCache",
+    "ClearAllCache": "ClearAllCache",
+    "ClearCacheConfirmationMessage": "Are you sure to clear the cache {0}?",
+    "ClearAllCacheConfirmationMessage": "Are you sure to clear all caches?"
   }
 }

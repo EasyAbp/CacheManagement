@@ -7,8 +7,8 @@ namespace EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem
     public class CreateEditCacheItemViewModel
     {
         [Required]
-        [DisplayName("CacheItemFullTypeName")]
-        public string FullTypeName { get; set; }
+        [DisplayName("CacheItemCacheName")]
+        public string CacheName { get; set; }
 
         [Required]
         [DisplayName("CacheItemDisplayName")]
@@ -18,6 +18,9 @@ namespace EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem
         [TextArea(Rows = 4)]
         public string Description { get; set; }
 
+        [DisplayName("CacheItemIgnoreMultiTenancy")]
+        public bool IgnoreMultiTenancy { get; set; }
+        
         [DisplayName("CacheItemTenantAllowed")]
         public bool TenantAllowed { get; set; }
     }

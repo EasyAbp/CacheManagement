@@ -22,6 +22,12 @@ $(function () {
                     items:
                         [
                             {
+                                text: l('CacheItemData'),
+                                action: function (data) {
+                                    document.location.href = "CacheItem/KeyList?cacheItemId=" + data.record.id
+                                }
+                            },
+                            {
                                 text: l('ClearCache'),
                                 action: function (data) {
                                     clearCacheModal.open({ cacheItemId: data.record.id });

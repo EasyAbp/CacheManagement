@@ -1,0 +1,45 @@
+@page
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@inherits EasyAbp.CacheManagement.Web.Pages.CacheManagementPage
+@model EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem.KeyListModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["CacheItemData"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:CacheItem"].Value);
+    PageLayout.Content.MenuItemName = "CacheItem";
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/CacheManagement/CacheItems/CacheItem/keyList.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/CacheManagement/CacheItems/CacheItem/keyList.css"/>
+}
+
+<script>
+    let cacheItemId = '@Model.CacheItem.Id'
+</script>
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["CacheItemData"] - @Model.CacheItem.DisplayName</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="CacheItemTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["CacheKey"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

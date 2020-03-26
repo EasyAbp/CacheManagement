@@ -49,6 +49,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyAbp.CacheManagement.Hos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyAbp.CacheManagement.Web.Unified", "host\EasyAbp.CacheManagement.Web.Unified\EasyAbp.CacheManagement.Web.Unified.csproj", "{3D872C41-E226-45C8-89C1-9D3DBD7C73F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "driver", "driver", "{7B138737-D818-4F2C-8A56-6264CF62B5B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyAbp.CacheManagement.StackExchangeRedis", "driver\EasyAbp.CacheManagement.StackExchangeRedis\EasyAbp.CacheManagement.StackExchangeRedis.csproj", "{32D77380-7200-4C6D-B2D7-D0CEC1BBD0B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +139,10 @@ Global
 		{3D872C41-E226-45C8-89C1-9D3DBD7C73F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D872C41-E226-45C8-89C1-9D3DBD7C73F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D872C41-E226-45C8-89C1-9D3DBD7C73F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D77380-7200-4C6D-B2D7-D0CEC1BBD0B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D77380-7200-4C6D-B2D7-D0CEC1BBD0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D77380-7200-4C6D-B2D7-D0CEC1BBD0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D77380-7200-4C6D-B2D7-D0CEC1BBD0B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +168,7 @@ Global
 		{690203F4-3CD5-4569-88D9-EE831EEA5F5F} = {E400416D-2895-4512-9D17-90681EEC7E0A}
 		{F6AC8D4A-EDD7-4514-8E8A-5BCB019864DB} = {E400416D-2895-4512-9D17-90681EEC7E0A}
 		{3D872C41-E226-45C8-89C1-9D3DBD7C73F2} = {E400416D-2895-4512-9D17-90681EEC7E0A}
+		{32D77380-7200-4C6D-B2D7-D0CEC1BBD0B2} = {7B138737-D818-4F2C-8A56-6264CF62B5B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4324B3B4-B60B-4E3C-91D8-59576B4E26DD}

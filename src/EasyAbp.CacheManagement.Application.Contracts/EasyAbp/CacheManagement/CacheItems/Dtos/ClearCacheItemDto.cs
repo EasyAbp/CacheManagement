@@ -8,9 +8,5 @@ namespace EasyAbp.CacheManagement.CacheItems.Dtos
     {
         [DisplayName("CacheItemId")]
         public Guid CacheItemId { get; set; }
-        
-        [Required]
-        [DisplayName("CacheItemCacheKey")]
-        public string CacheKey { get; set; }
     }
 }

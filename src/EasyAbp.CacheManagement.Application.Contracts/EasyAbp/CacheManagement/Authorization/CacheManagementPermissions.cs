@@ -13,6 +13,7 @@ namespace EasyAbp.CacheManagement.Authorization
             public const string Update = Default + ".Update";
             public const string Create = Default + ".Create";
             public const string ClearCache = Default + ".ClearCache";
+            public const string ClearAllCache = Default + ".ClearAllCache";
         }
 
         public static string[] GetAll()
