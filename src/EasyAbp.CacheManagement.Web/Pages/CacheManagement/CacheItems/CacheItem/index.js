@@ -68,7 +68,8 @@ $(function () {
         dataTable.ajax.reload();
     });
 
-    clearCacheModal.onResult(function () {
+    clearCacheModal.onResult(function (e) {
+        abp.notify.info(l('SuccessCleared'));
         dataTable.ajax.reload();
     });
 
