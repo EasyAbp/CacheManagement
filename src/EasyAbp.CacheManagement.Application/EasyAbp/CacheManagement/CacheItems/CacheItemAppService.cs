@@ -49,7 +49,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.Default)]
-        public async Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId)
+        public virtual async Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId)
         {
             var cacheItem = await GetEntityByIdAsync(cacheItemId);
 
@@ -61,7 +61,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.Default)]
-        public async Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey)
+        public virtual async Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey)
         {
             var cacheItem = await GetEntityByIdAsync(cacheItemId);
 
@@ -78,7 +78,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
-        public async Task ClearSpecificAsync(ClearSpecificCacheItemDto input)
+        public virtual async Task ClearSpecificAsync(ClearSpecificCacheItemDto input)
         {
             var cacheItem = await GetEntityByIdAsync(input.CacheItemId);
 
@@ -88,7 +88,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
-        public async Task ClearAsync(ClearCacheItemDto input)
+        public virtual async Task ClearAsync(ClearCacheItemDto input)
         {
             var cacheItem = await GetEntityByIdAsync(input.CacheItemId);
 
@@ -98,7 +98,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.ClearAllCache)]
-        public async Task ClearAllAsync()
+        public virtual async Task ClearAllAsync()
         {
             await _cacheItemManager.ClearAllAsync();
         }

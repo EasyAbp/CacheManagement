@@ -29,7 +29,7 @@ namespace EasyAbp.CacheManagement.CacheItems
             return Task.CompletedTask;
         }
         
-        private bool HasClearCachePermission(AuthorizationHandlerContext context, CacheItem resource)
+        protected virtual bool HasClearCachePermission(AuthorizationHandlerContext context, CacheItem resource)
         {
             return resource.TenantAllowed || _currentTenant.GetMultiTenancySide() == MultiTenancySides.Host;
         }
