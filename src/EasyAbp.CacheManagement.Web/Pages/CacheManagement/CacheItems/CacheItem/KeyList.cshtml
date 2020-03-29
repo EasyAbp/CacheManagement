@@ -8,7 +8,7 @@
 @inject IPageLayout PageLayout
 @{
     PageLayout.Content.Title = L["CacheItemData"].Value;
-    PageLayout.Content.BreadCrumb.Add(L["Menu:CacheItem"].Value);
+    PageLayout.Content.BreadCrumb.Add(L["Menu:CacheItems"].Value);
     PageLayout.Content.MenuItemName = "CacheItem";
 }
 
@@ -46,7 +46,7 @@
             <thead>
             <tr>
                 <th>@L["Actions"]</th>
-                <th>@L["CacheKey"]</th>
+                <th>@L["CacheItemCacheKey"]</th>
             </tr>
             </thead>
         </abp-table>

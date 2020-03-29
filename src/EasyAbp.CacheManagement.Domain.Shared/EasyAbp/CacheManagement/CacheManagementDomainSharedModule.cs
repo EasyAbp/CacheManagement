@@ -25,7 +25,7 @@ namespace EasyAbp.CacheManagement
                 options.Resources
                     .Add<CacheManagementResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("/Localization/CacheManagement");
+                    .AddVirtualJson("/EasyAbp/CacheManagement/Localization/CacheManagement");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>

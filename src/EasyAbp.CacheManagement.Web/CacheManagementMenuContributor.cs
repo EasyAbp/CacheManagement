@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using EasyAbp.CacheManagement.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
@@ -24,11 +25,18 @@ namespace EasyAbp.CacheManagement.Web
 
             var authorizationService = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
 
+            var cacheManagementMenuItem = new ApplicationMenuItem("CacheManagement", l["Menu:CacheManagement"]);
+            
             if (await authorizationService.IsGrantedAsync(CacheManagementPermissions.CacheItems.Default))
             {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem("CacheItem", l["Menu:CacheItem"], "/CacheManagement/CacheItems/CacheItem")
+                cacheManagementMenuItem.AddItem(
+                    new ApplicationMenuItem("CacheItem", l["Menu:CacheItems"], "/CacheManagement/CacheItems/CacheItem")
                 );
+            }
+
+            if (!cacheManagementMenuItem.Items.IsNullOrEmpty())
+            {
+                context.Menu.Items.Add(cacheManagementMenuItem);
             }
         }
     }
