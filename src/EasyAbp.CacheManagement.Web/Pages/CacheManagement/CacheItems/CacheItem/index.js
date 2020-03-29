@@ -12,6 +12,7 @@ $(function () {
         serverSide: true,
         paging: true,
         searching: false,
+        scrollX: true,
         autoWidth: false,
         scrollCollapse: true,
         order: [[1, "asc"]],

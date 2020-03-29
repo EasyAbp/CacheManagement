@@ -9,6 +9,7 @@ $(function () {
         processing: true,
         bPaginate: false,
         searching: false,
+        scrollX: true,
         autoWidth: false,
         scrollCollapse: true,
         order: [[1, "asc"]],
@@ -45,7 +46,7 @@ $(function () {
                         ]
                 }
             },
-            { data: "cacheKey" },
+            { data: "cacheKey", width: "10%" },
         ]
     }));
 
