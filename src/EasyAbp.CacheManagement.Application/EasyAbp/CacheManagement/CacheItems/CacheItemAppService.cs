@@ -7,6 +7,7 @@ using EasyAbp.CacheManagement.CacheItems.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Domain.Entities;
 
 namespace EasyAbp.CacheManagement.CacheItems
 {
@@ -20,20 +21,37 @@ namespace EasyAbp.CacheManagement.CacheItems
         protected override string GetListPolicyName { get; set; } = CacheManagementPermissions.CacheItems.Default;
 
         private readonly ICacheItemManager _cacheItemManager;
-        private readonly ICacheItemRepository _repository;
 
         public CacheItemAppService(
             ICacheItemManager cacheItemManager,
             ICacheItemRepository repository) : base(repository)
         {
             _cacheItemManager = cacheItemManager;
-            _repository = repository;
+        }
+
+        protected override async Task<CacheItem> GetEntityByIdAsync(Guid id)
+        {
+            var cacheItem = await base.GetEntityByIdAsync(id);
+
+            if (CurrentTenant.Id.HasValue && !cacheItem.TenantAllowed)
+            {
+                throw new EntityNotFoundException(typeof(CacheItem), id);
+            }
+
+            return cacheItem;
+        }
+
+        protected override IQueryable<CacheItem> CreateFilteredQuery(PagedAndSortedResultRequestDto input)
+        {
+            return CurrentTenant.Id.HasValue
+                ? base.CreateFilteredQuery(input).Where(i => i.TenantAllowed)
+                : base.CreateFilteredQuery(input);
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.Default)]
         public async Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId)
         {
-            var cacheItem = await _repository.GetAsync(cacheItemId);
+            var cacheItem = await GetEntityByIdAsync(cacheItemId);
 
             var keys = await _cacheItemManager.GetKeysAsync(cacheItem);
 
@@ -45,7 +63,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         [Authorize(CacheManagementPermissions.CacheItems.Default)]
         public async Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey)
         {
-            var cacheItem = await _repository.GetAsync(cacheItemId);
+            var cacheItem = await GetEntityByIdAsync(cacheItemId);
 
             var keys = await _cacheItemManager.GetKeysAsync(cacheItem);
 
@@ -62,7 +80,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
         public async Task ClearSpecificAsync(ClearSpecificCacheItemDto input)
         {
-            var cacheItem = await _repository.GetAsync(input.CacheItemId);
+            var cacheItem = await GetEntityByIdAsync(input.CacheItemId);
 
             await AuthorizationService.CheckAsync(cacheItem, CacheManagementPermissions.CacheItems.ClearCache);
             
@@ -72,7 +90,7 @@ namespace EasyAbp.CacheManagement.CacheItems
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
         public async Task ClearAsync(ClearCacheItemDto input)
         {
-            var cacheItem = await _repository.GetAsync(input.CacheItemId);
+            var cacheItem = await GetEntityByIdAsync(input.CacheItemId);
 
             await AuthorizationService.CheckAsync(cacheItem, CacheManagementPermissions.CacheItems.ClearCache);
 
