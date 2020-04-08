@@ -17,7 +17,7 @@ namespace EasyAbp.CacheManagement
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<CacheManagementDomainSharedModule>("EasyAbp.CacheManagement");
+                options.FileSets.AddEmbedded<CacheManagementDomainSharedModule>();
             });
 
             Configure<AbpLocalizationOptions>(options =>

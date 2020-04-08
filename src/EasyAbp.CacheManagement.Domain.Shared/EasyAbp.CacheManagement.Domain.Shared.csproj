@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\CacheManagement\*.json" />
-    <Content Remove="Localization\CacheManagement\*.json" />
+    <EmbeddedResource Include="EasyAbp\CacheManagement\Localization\CacheManagement\*.json" />
+    <Content Remove="EasyAbp\CacheManagement\Localization\CacheManagement\*.json" />
   </ItemGroup>
 
 </Project>
