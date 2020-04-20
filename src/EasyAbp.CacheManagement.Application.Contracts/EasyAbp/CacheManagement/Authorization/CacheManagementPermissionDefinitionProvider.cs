@@ -13,7 +13,7 @@ namespace EasyAbp.CacheManagement.Authorization
 
             var cacheItems = moduleGroup.AddPermission(CacheManagementPermissions.CacheItems.Default, L("Permission:CacheItem"));
             cacheItems.AddChild(CacheManagementPermissions.CacheItems.Create, L("Permission:Create"));
-            cacheItems.AddChild(CacheManagementPermissions.CacheItems.Update, L("Permission:SetRead"));
+            cacheItems.AddChild(CacheManagementPermissions.CacheItems.Update, L("Permission:Update"));
             cacheItems.AddChild(CacheManagementPermissions.CacheItems.Delete, L("Permission:Delete"));
             cacheItems.AddChild(CacheManagementPermissions.CacheItems.ClearCache, L("Permission:ClearCache"));
             cacheItems.AddChild(CacheManagementPermissions.CacheItems.ClearAllCache, L("Permission:ClearAllCache"), MultiTenancySides.Host);
