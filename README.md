@@ -1,4 +1,8 @@
 # CacheManagement
+
+[![NuGet](https://img.shields.io/nuget/v/EasyAbp.CacheManagement.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.CacheManagement.Domain.Shared)
+[![NuGet Download](https://img.shields.io/nuget/dt/EasyAbp.CacheManagement.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.CacheManagement.Domain.Shared)
+
 An abp application module helps administrators to manage the app cache data.
 
 ## Getting Started
