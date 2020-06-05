@@ -32,7 +32,7 @@ namespace EasyAbp.CacheManagement
         private void AddLogoutItemToMenu(MenuConfigurationContext context)
         {
             var currentUser = context.ServiceProvider.GetRequiredService<ICurrentUser>();
-            var l = context.ServiceProvider.GetRequiredService<IStringLocalizer<CacheManagementResource>>();
+            var l = context.GetLocalizer<CacheManagementResource>();
 
             if (currentUser.IsAuthenticated)
             {

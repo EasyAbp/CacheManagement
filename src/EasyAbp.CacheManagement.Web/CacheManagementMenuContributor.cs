@@ -21,7 +21,7 @@ namespace EasyAbp.CacheManagement.Web
 
         private async Task ConfigureMainMenu(MenuConfigurationContext context)
         {
-            var l = context.ServiceProvider.GetRequiredService<IStringLocalizer<CacheManagementResource>>();
+            var l = context.GetLocalizer<CacheManagementResource>();
 
             var authorizationService = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
 
