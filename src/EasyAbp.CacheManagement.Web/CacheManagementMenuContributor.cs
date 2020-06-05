@@ -23,11 +23,9 @@ namespace EasyAbp.CacheManagement.Web
         {
             var l = context.GetLocalizer<CacheManagementResource>();
 
-            var authorizationService = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
-
             var cacheManagementMenuItem = new ApplicationMenuItem("CacheManagement", l["Menu:CacheManagement"]);
             
-            if (await authorizationService.IsGrantedAsync(CacheManagementPermissions.CacheItems.Default))
+            if (await context.IsGrantedAsync(CacheManagementPermissions.CacheItems.Default))
             {
                 cacheManagementMenuItem.AddItem(
                     new ApplicationMenuItem("CacheItem", l["Menu:CacheItems"], "/CacheManagement/CacheItems/CacheItem")
