@@ -23,12 +23,12 @@ namespace EasyAbp.CacheManagement.Web
         {
             var l = context.GetLocalizer<CacheManagementResource>();
 
-            var cacheManagementMenuItem = new ApplicationMenuItem("CacheManagement", l["Menu:CacheManagement"]);
+            var cacheManagementMenuItem = new ApplicationMenuItem("EasyAbpCacheManagement", l["Menu:CacheManagement"]);
             
             if (await context.IsGrantedAsync(CacheManagementPermissions.CacheItems.Default))
             {
                 cacheManagementMenuItem.AddItem(
-                    new ApplicationMenuItem("CacheItem", l["Menu:CacheItems"], "/CacheManagement/CacheItems/CacheItem")
+                    new ApplicationMenuItem("EasyAbpCacheManagementCacheItem", l["Menu:CacheItem"], "/CacheManagement/CacheItems/CacheItem")
                 );
             }
 

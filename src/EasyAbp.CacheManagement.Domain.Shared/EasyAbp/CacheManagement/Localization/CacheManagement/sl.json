@@ -2,7 +2,7 @@
   "culture": "sl",
   "texts": {
     "Menu:CacheManagement": "Cache Management",
-    "Menu:CacheItems": "Cache Items",
+    "Menu:CacheItem": "Cache Items",
     "Detail": "Detail",
     "CacheItem": "Cache Item",
     "CacheItemData": "Cache Data",

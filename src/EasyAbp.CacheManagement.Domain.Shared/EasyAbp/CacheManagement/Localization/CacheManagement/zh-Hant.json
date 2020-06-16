@@ -2,7 +2,7 @@
   "culture": "zh-Hant",
   "texts": {
     "Menu:CacheManagement": "緩存管理",
-    "Menu:CacheItems": "緩存項",
+    "Menu:CacheItem": "緩存項",
     "Detail": "詳情",
     "CacheItem": "緩存項",
     "CacheItemData": "緩存數據",

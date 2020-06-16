@@ -2,7 +2,7 @@
   "culture": "zh-Hans",
   "texts": {
     "Menu:CacheManagement": "缓存管理",
-    "Menu:CacheItems": "缓存项",
+    "Menu:CacheItem": "缓存项",
     "Detail": "详情",
     "CacheItem": "缓存项",
     "CacheItemData": "缓存数据",
