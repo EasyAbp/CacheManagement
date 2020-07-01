@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\EasyAbp.CacheManagement.Application\EasyAbp.CacheManagement.Application.csproj" />
     <ProjectReference Include="..\EasyAbp.CacheManagement.Domain.Tests\EasyAbp.CacheManagement.Domain.Tests.csproj" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
   </ItemGroup>
 
 </Project>
