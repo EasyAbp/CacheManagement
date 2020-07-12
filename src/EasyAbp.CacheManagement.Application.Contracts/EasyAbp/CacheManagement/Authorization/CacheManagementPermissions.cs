@@ -4,7 +4,7 @@ namespace EasyAbp.CacheManagement.Authorization
 {
     public class CacheManagementPermissions
     {
-        public const string GroupName = "CacheManagement";
+        public const string GroupName = "EasyAbp.CacheManagement";
         
         public class CacheItems
         {

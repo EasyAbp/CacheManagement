@@ -1,6 +1,6 @@
 $(function () {
 
-    var l = abp.localization.getResource('CacheManagement');
+    var l = abp.localization.getResource('EasyAbpCacheManagement');
     var detailModal = new abp.ModalManager(abp.appPath + 'CacheManagement/CacheItems/CacheItem/DetailModal');
 
     var service = easyAbp.cacheManagement.cacheItems.cacheItem;
@@ -29,6 +29,7 @@ $(function () {
                             },
                             {
                                 text: l('ClearCache'),
+                                visible: abp.auth.isGranted('EasyAbp.CacheManagement.CacheItem.ClearCache'),
                                 confirmMessage: function (data) {
                                     return l('ClearCacheConfirmationMessage', data.record.cacheKey);
                                 },

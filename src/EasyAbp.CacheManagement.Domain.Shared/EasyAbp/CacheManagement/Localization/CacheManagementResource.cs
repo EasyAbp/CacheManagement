@@ -2,7 +2,7 @@
 
 namespace EasyAbp.CacheManagement.Localization
 {
-    [LocalizationResourceName("CacheManagement")]
+    [LocalizationResourceName("EasyAbpCacheManagement")]
     public class CacheManagementResource
     {
         

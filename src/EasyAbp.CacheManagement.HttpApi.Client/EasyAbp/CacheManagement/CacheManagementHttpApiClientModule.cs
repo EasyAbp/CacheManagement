@@ -9,7 +9,7 @@ namespace EasyAbp.CacheManagement
         typeof(AbpHttpClientModule))]
     public class CacheManagementHttpApiClientModule : AbpModule
     {
-        public const string RemoteServiceName = "CacheManagement";
+        public const string RemoteServiceName = "EasyAbpCacheManagement";
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

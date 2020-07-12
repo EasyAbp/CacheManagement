@@ -1,6 +1,7 @@
 @page
-@inherits EasyAbp.CacheManagement.Web.Pages.CacheManagementPage
-@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using EasyAbp.CacheManagement.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<CacheManagementResource> L
 @model EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem.ClearCacheModalModel
 @{
     Layout = null;

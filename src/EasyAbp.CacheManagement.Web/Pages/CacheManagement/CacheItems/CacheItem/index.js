@@ -1,6 +1,6 @@
 $(function () {
 
-    var l = abp.localization.getResource('CacheManagement');
+    var l = abp.localization.getResource('EasyAbpCacheManagement');
 
     var service = easyAbp.cacheManagement.cacheItems.cacheItem;
     var createModal = new abp.ModalManager(abp.appPath + 'CacheManagement/CacheItems/CacheItem/CreateModal');
@@ -30,18 +30,21 @@ $(function () {
                             },
                             {
                                 text: l('ClearCache'),
+                                visible: abp.auth.isGranted('EasyAbp.CacheManagement.CacheItem.ClearAllCache'),
                                 action: function (data) {
                                     clearCacheModal.open({ cacheItemId: data.record.id });
                                 }
                             },
                             {
                                 text: l('Edit'),
+                                visible: abp.auth.isGranted('EasyAbp.CacheManagement.CacheItem.Update'),
                                 action: function (data) {
                                     editModal.open({ id: data.record.id });
                                 }
                             },
                             {
                                 text: l('Delete'),
+                                visible: abp.auth.isGranted('EasyAbp.CacheManagement.CacheItem.Delete'),
                                 confirmMessage: function (data) {
                                     return l('CacheItemDeletionConfirmationMessage', data.record.id);
                                 },

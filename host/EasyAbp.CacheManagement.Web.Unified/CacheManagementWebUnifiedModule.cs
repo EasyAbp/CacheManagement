@@ -132,10 +132,6 @@ namespace EasyAbp.CacheManagement
         {
             Configure<AbpAspNetCoreMvcOptions>(options =>
             {
-                options.ConventionalControllers.Create(typeof(CacheManagementApplicationModule).Assembly, setting =>
-                {
-                    setting.RootPath = "cacheManagement";
-                });
             });
         }
 

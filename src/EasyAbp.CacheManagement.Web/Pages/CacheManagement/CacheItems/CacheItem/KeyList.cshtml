@@ -1,9 +1,11 @@
 @page
 @using EasyAbp.CacheManagement.Authorization
+@using EasyAbp.CacheManagement.Localization
 @using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
-@inherits EasyAbp.CacheManagement.Web.Pages.CacheManagementPage
 @model EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem.KeyListModel
+@inject IHtmlLocalizer<CacheManagementResource> L
 @inject IAuthorizationService Authorization
 @inject IPageLayout PageLayout
 @{
