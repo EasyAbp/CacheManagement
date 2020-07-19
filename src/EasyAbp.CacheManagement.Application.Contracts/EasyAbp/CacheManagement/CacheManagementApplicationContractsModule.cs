@@ -12,12 +12,6 @@ namespace EasyAbp.CacheManagement
         )]
     public class CacheManagementApplicationContractsModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<AbpVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.AddEmbedded<CacheManagementApplicationContractsModule>("EasyAbp.CacheManagement");
-            });
-        }
+
     }
 }

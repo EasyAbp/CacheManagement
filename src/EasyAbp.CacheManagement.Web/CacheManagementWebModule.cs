@@ -40,7 +40,7 @@ namespace EasyAbp.CacheManagement.Web
 
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<CacheManagementWebModule>("EasyAbp.CacheManagement.Web");
+                options.FileSets.AddEmbedded<CacheManagementWebModule>();
             });
 
             context.Services.AddAutoMapperObjectMapper<CacheManagementWebModule>();
