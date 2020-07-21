@@ -30,9 +30,7 @@ An abp application module helps administrators to manage the app cache data.
     1. Install `EasyAbp.CacheManagement.MongoDB` NuGet package to `MyProject.MongoDB` project and add `[DependsOn(CacheManagementMongoDbModule)]` attribute to the module.
 
     1. (Optional) If you need MVC UI, install `EasyAbp.CacheManagement.Web` NuGet package to `MyProject.Web` project and add `[DependsOn(CacheManagementWebModule)]` attribute to the module.
-    
-    1. Add `options.ConventionalControllers.Create(typeof(CacheManagementApplicationModule).Assembly);` to `Configure<AbpAspNetCoreMvcOptions>(options => { ... });` in your host module (It is usually Web project or HttpApi.Host project).
-    
+
     1. Install `EasyAbp.CacheManagement.StackExchangeRedis` NuGet to `MyProject.Domain` project and add `[DependsOn(CacheManagementStackExchangeRedisModule)]` attribute to the module. (If you are using other distributed cache provider, please [find a correct driver](https://github.com/EasyAbp/CacheManagement/tree/master/driver).)
 
     1. Add `builder.ConfigureCacheManagement();` to OnModelCreating method in `MyProjectMigrationsDbContext.cs`.
