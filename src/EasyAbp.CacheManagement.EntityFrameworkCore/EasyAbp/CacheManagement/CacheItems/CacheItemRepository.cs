@@ -5,7 +5,7 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace EasyAbp.CacheManagement.CacheItems
 {
-    public class CacheItemRepository : EfCoreRepository<CacheManagementDbContext, CacheItem, Guid>, ICacheItemRepository
+    public class CacheItemRepository : EfCoreRepository<ICacheManagementDbContext, CacheItem, Guid>, ICacheItemRepository
     {
         public CacheItemRepository(IDbContextProvider<CacheManagementDbContext> dbContextProvider) : base(dbContextProvider)
         {
