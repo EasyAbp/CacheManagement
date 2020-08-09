@@ -7,7 +7,7 @@ namespace EasyAbp.CacheManagement.CacheItems
 {
     public class CacheItemRepository : EfCoreRepository<ICacheManagementDbContext, CacheItem, Guid>, ICacheItemRepository
     {
-        public CacheItemRepository(IDbContextProvider<CacheManagementDbContext> dbContextProvider) : base(dbContextProvider)
+        public CacheItemRepository(IDbContextProvider<ICacheManagementDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
     }
