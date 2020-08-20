@@ -35,7 +35,7 @@ steps:
   inputs:
     script: |
       echo commands
-      sed -i '0,/SelfUrl[^,]*/s//$(SelfUrl)"/g' host/EasyAbp.CacheManagement.Web.Unified/appsettings.json
+      sed -i '0,/Configuration[^,]*/s//$(Configuration)"/g' host/EasyAbp.CacheManagement.Web.Unified/appsettings.json
       echo commands executed
 
 - task: DotNetCoreCLI@2
