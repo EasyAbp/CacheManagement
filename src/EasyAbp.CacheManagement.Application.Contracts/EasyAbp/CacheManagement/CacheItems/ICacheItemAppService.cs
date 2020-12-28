@@ -14,13 +14,13 @@ namespace EasyAbp.CacheManagement.CacheItems
             CreateUpdateCacheItemDto,
             CreateUpdateCacheItemDto>
     {
-        Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId);
+        Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid id);
 
-        Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey);
+        Task<CacheItemDataDto> GetDataAsync(Guid id, string cacheKey);
         
-        Task ClearSpecificAsync(ClearSpecificCacheItemDto input);
+        Task ClearByKeyAsync(Guid id, string cacheKey);
         
-        Task ClearAsync(ClearCacheItemDto input);
+        Task ClearAsync(Guid id);
         
         Task ClearAllAsync();
     }

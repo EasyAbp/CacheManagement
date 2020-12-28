@@ -8,7 +8,7 @@ using Volo.Abp.Application.Dtos;
 namespace EasyAbp.CacheManagement.CacheItems
 {
     [RemoteService(Name = "EasyAbpCacheManagement")]
-    [Route("/api/cacheManagement/cacheItem")]
+    [Route("/api/cache-management/cache-item")]
     public class CacheItemController : CacheManagementController, ICacheItemAppService
     {
         private readonly ICacheItemAppService _service;
@@ -52,35 +52,35 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [HttpGet]
-        [Route("keys/{cacheItemId}")]
-        public Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId)
+        [Route("keys/{id}")]
+        public Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid id)
         {
-            return _service.GetKeysAsync(cacheItemId);
+            return _service.GetKeysAsync(id);
         }
 
         [HttpGet]
-        [Route("data/{cacheItemId}")]
-        public Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey)
+        [Route("data/{id}/{cacheKey}")]
+        public Task<CacheItemDataDto> GetDataAsync(Guid id, string cacheKey)
         {
-            return _service.GetDataAsync(cacheItemId, cacheKey);
+            return _service.GetDataAsync(id, cacheKey);
         }
 
         [HttpPost]
-        [Route("clearSpecific")]
-        public Task ClearSpecificAsync(ClearSpecificCacheItemDto input)
+        [Route("clear/{id}/{cacheKey}")]
+        public Task ClearByKeyAsync(Guid id, string cacheKey)
         {
-            return _service.ClearSpecificAsync(input);
+            return _service.ClearByKeyAsync(id, cacheKey);
         }
 
         [HttpPost]
-        [Route("clear")]
-        public Task ClearAsync(ClearCacheItemDto input)
+        [Route("clear/{id}")]
+        public Task ClearAsync(Guid id)
         {
-            return _service.ClearAsync(input);
+            return _service.ClearAsync(id);
         }
 
         [HttpPost]
-        [Route("clearAll")]
+        [Route("clear/all")]
         public Task ClearAllAsync()
         {
             return _service.ClearAllAsync();

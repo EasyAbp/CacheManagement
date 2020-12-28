@@ -25,14 +25,14 @@ $(function () {
                             {
                                 text: l('CacheItemData'),
                                 action: function (data) {
-                                    document.location.href = "CacheItem/KeyList?cacheItemId=" + data.record.id
+                                    document.location.href = "CacheItem/KeyList?id=" + data.record.id
                                 }
                             },
                             {
                                 text: l('ClearCache'),
                                 visible: abp.auth.isGranted('EasyAbp.CacheManagement.CacheItem.ClearAllCache'),
                                 action: function (data) {
-                                    clearCacheModal.open({ cacheItemId: data.record.id });
+                                    clearCacheModal.open({ id: data.record.id });
                                 }
                             },
                             {

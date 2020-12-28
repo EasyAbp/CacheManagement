@@ -5,7 +5,7 @@ namespace EasyAbp.CacheManagement.CacheItems.Dtos
 {
     public class CacheItemDataDto
     {
-        public Guid CacheItemId { get; set; }
+        public Guid Id { get; set; }
         
         public string CacheKey { get; set; }
         

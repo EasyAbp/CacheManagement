@@ -14,7 +14,7 @@ $(function () {
         scrollCollapse: true,
         order: [[1, "asc"]],
         ajax: abp.libs.datatables.createAjax(service.getKeys, function () {
-            return cacheItemId;
+            return id;
         }),
         columnDefs: [
             {
@@ -24,7 +24,7 @@ $(function () {
                             {
                                 text: l('Detail'),
                                 action: function (data) {
-                                    detailModal.open({ cacheItemId:data.record.cacheItemId, cacheKey: data.record.cacheKey });
+                                    detailModal.open({ id: data.record.id, cacheKey: data.record.cacheKey });
                                 }
                             },
                             {
@@ -34,10 +34,7 @@ $(function () {
                                     return l('ClearCacheConfirmationMessage', data.record.cacheKey);
                                 },
                                 action: function (data) {
-                                    service.clearSpecific({
-                                        cacheItemId: data.record.cacheItemId,
-                                        cacheKey: data.record.cacheKey
-                                    })
+                                    service.clearByKey(data.record.id, data.record.cacheKey)
                                     .then(function () {
                                         abp.notify.info(l('SuccessCleared'));
                                         dataTable.ajax.reload();
@@ -56,7 +53,7 @@ $(function () {
         abp.message.confirm(l('ClearAllCacheConfirmationMessage'), l('ClearAllCache'))
             .done(function (accepted) {
                 if (accepted) {
-                    service.clear({ cacheItemId: cacheItemId}).done(function () {
+                    service.clear({ id: id}).done(function () {
                         abp.notify.info(l('SuccessCleared'));
                     })
                 }

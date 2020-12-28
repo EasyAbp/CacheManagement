@@ -49,48 +49,48 @@ namespace EasyAbp.CacheManagement.CacheItems
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.Default)]
-        public virtual async Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid cacheItemId)
+        public virtual async Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid id)
         {
-            var cacheItem = await GetEntityByIdAsync(cacheItemId);
+            var cacheItem = await GetEntityByIdAsync(id);
 
             var keys = await _cacheItemManager.GetKeysAsync(cacheItem);
 
             return new ListResultDto<CacheItemDataDto>(
                 new List<CacheItemDataDto>(keys.Select(key => new CacheItemDataDto
-                    {CacheItemId = cacheItemId, CacheKey = key})));
+                    {Id = id, CacheKey = key})));
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.Default)]
-        public virtual async Task<CacheItemDataDto> GetDataAsync(Guid cacheItemId, string cacheKey)
+        public virtual async Task<CacheItemDataDto> GetDataAsync(Guid id, string cacheKey)
         {
-            var cacheItem = await GetEntityByIdAsync(cacheItemId);
+            var cacheItem = await GetEntityByIdAsync(id);
 
             var keys = await _cacheItemManager.GetKeysAsync(cacheItem);
 
-            var key = keys.Single(key => key.Equals(cacheKey));
+            var key = keys.Single(x => x.Equals(cacheKey));
 
             return new CacheItemDataDto
             {
-                CacheItemId = cacheItemId,
+                Id = id,
                 CacheKey = cacheKey,
                 CacheValue = await _cacheItemManager.GetValueAsync(key)
             };
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
-        public virtual async Task ClearSpecificAsync(ClearSpecificCacheItemDto input)
+        public virtual async Task ClearByKeyAsync(Guid id, string cacheKey)
         {
-            var cacheItem = await GetEntityByIdAsync(input.CacheItemId);
+            var cacheItem = await GetEntityByIdAsync(id);
 
             await AuthorizationService.CheckAsync(cacheItem, CacheManagementPermissions.CacheItems.ClearCache);
             
-            await _cacheItemManager.ClearSpecificAsync(cacheItem, input.CacheKey);
+            await _cacheItemManager.ClearSpecificAsync(cacheItem, cacheKey);
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.ClearCache)]
-        public virtual async Task ClearAsync(ClearCacheItemDto input)
+        public virtual async Task ClearAsync(Guid id)
         {
-            var cacheItem = await GetEntityByIdAsync(input.CacheItemId);
+            var cacheItem = await GetEntityByIdAsync(id);
 
             await AuthorizationService.CheckAsync(cacheItem, CacheManagementPermissions.CacheItems.ClearCache);
 

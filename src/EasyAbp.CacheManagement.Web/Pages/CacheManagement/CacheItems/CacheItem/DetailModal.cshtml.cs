@@ -19,9 +19,9 @@ namespace EasyAbp.CacheManagement.Web.Pages.CacheManagement.CacheItems.CacheItem
             _service = service;
         }
 
-        public async Task OnGetAsync(Guid cacheItemId, string cacheKey)
+        public async Task OnGetAsync(Guid id, string cacheKey)
         {
-            var data = await _service.GetDataAsync(cacheItemId, cacheKey);
+            var data = await _service.GetDataAsync(id, cacheKey);
             
             Data = new CacheItemDataViewModel
             {

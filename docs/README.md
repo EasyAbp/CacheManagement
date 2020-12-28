@@ -12,7 +12,7 @@ We have launched an online demo for this module: [https://cache.samples.easyabp.
 
 ## Installation
 
-1. Install the following NuGet packages. ([see how](https://github.com/EasyAbp/EasyAbpGuide/blob/master/How-To.md#add-nuget-packages))
+1. Install the following NuGet packages. ([see how](https://github.com/EasyAbp/EasyAbpGuide/blob/master/docs/How-To.md#add-nuget-packages))
 
     * EasyAbp.CacheManagement.Application
     * EasyAbp.CacheManagement.Application.Contracts
@@ -24,11 +24,11 @@ We have launched an online demo for this module: [https://cache.samples.easyabp.
     * (Optional) EasyAbp.CacheManagement.MongoDB
     * (Optional) EasyAbp.CacheManagement.Web
 
-1. Add `DependsOn(typeof(CacheManagementXxxModule))` attribute to configure the module dependencies. ([see how](https://github.com/EasyAbp/EasyAbpGuide/blob/master/How-To.md#add-module-dependencies))
+1. Add `DependsOn(typeof(CacheManagementXxxModule))` attribute to configure the module dependencies. ([see how](https://github.com/EasyAbp/EasyAbpGuide/blob/master/docs/How-To.md#add-module-dependencies))
 
 1. Add `builder.ConfigureCacheManagement();` to the `OnModelCreating()` method in **MyProjectMigrationsDbContext.cs**.
 
-1. Add EF Core migrations and update your database. See: [ABP document](https://docs.abp.io/en/abp/latest/Tutorials/Part-1?UI=MVC#add-new-migration-update-the-database).
+1. Add EF Core migrations and update your database. See: [ABP document](https://docs.abp.io/en/abp/latest/Tutorials/Part-1?UI=MVC&DB=EF#add-database-migration).
 
 
 ## Usage
