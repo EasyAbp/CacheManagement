@@ -24,6 +24,7 @@ We have launched an online demo for this module: [https://cache.samples.easyabp.
     * EasyAbp.CacheManagement.HttpApi.Client
     * (Optional) EasyAbp.CacheManagement.MongoDB
     * (Optional) EasyAbp.CacheManagement.Web
+    * (Optional) EasyAbp.CacheManagement.StackExchangeRedis
 
 1. Add `DependsOn(typeof(CacheManagementXxxModule))` attribute to configure the module dependencies. ([see how](https://github.com/EasyAbp/EasyAbpGuide/blob/master/docs/How-To.md#add-module-dependencies))
 
