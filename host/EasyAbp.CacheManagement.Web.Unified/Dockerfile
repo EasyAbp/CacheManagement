@@ -1,11 +1,11 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["host/EasyAbp.CacheManagement.Web.Unified/EasyAbp.CacheManagement.Web.Unified.csproj", "host/EasyAbp.CacheManagement.Web.Unified/"]
 COPY ["src/EasyAbp.CacheManagement.Web/EasyAbp.CacheManagement.Web.csproj", "src/EasyAbp.CacheManagement.Web/"]
@@ -17,6 +17,7 @@ COPY ["src/EasyAbp.CacheManagement.Domain/EasyAbp.CacheManagement.Domain.csproj"
 COPY ["src/EasyAbp.CacheManagement.Application/EasyAbp.CacheManagement.Application.csproj", "src/EasyAbp.CacheManagement.Application/"]
 COPY ["driver/EasyAbp.CacheManagement.StackExchangeRedis/EasyAbp.CacheManagement.StackExchangeRedis.csproj", "driver/EasyAbp.CacheManagement.StackExchangeRedis/"]
 COPY ["host/EasyAbp.CacheManagement.Host.Shared/EasyAbp.CacheManagement.Host.Shared.csproj", "host/EasyAbp.CacheManagement.Host.Shared/"]
+COPY Directory.Build.props .
 RUN dotnet restore "host/EasyAbp.CacheManagement.Web.Unified/EasyAbp.CacheManagement.Web.Unified.csproj"
 COPY . .
 WORKDIR "/src/host/EasyAbp.CacheManagement.Web.Unified"
