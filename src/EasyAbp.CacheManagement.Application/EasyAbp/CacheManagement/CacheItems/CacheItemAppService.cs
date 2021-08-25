@@ -41,11 +41,11 @@ namespace EasyAbp.CacheManagement.CacheItems
             return cacheItem;
         }
 
-        protected override IQueryable<CacheItem> CreateFilteredQuery(PagedAndSortedResultRequestDto input)
+        protected override async Task<IQueryable<CacheItem>> CreateFilteredQueryAsync(PagedAndSortedResultRequestDto input)
         {
             return CurrentTenant.Id.HasValue
-                ? base.CreateFilteredQuery(input).Where(i => i.TenantAllowed)
-                : base.CreateFilteredQuery(input);
+                ? (await base.CreateFilteredQueryAsync(input)).Where(i => i.TenantAllowed)
+                : await base.CreateFilteredQueryAsync(input);
         }
 
         [Authorize(CacheManagementPermissions.CacheItems.Default)]

@@ -122,7 +122,7 @@ namespace EasyAbp.CacheManagement
                 options.Configuration = configuration["Redis:Configuration"];
             });
 
-            if (!hostingEnvironment.IsDevelopment())
+            // if (!hostingEnvironment.IsDevelopment())
             {
                 var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
                 context.Services

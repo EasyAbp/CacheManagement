@@ -53,7 +53,8 @@ $(function () {
         abp.message.confirm(l('ClearAllCacheConfirmationMessage'), l('ClearAllCache'))
             .done(function (accepted) {
                 if (accepted) {
-                    service.clear({ id: id}).done(function () {
+                    console.log(id)
+                    service.clear(id).done(function () {
                         abp.notify.info(l('SuccessCleared'));
                     })
                 }

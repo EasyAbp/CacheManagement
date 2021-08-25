@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Services;
 
 namespace EasyAbp.CacheManagement.CacheItems
 {
-    public interface ICacheItemManager : IDomainService
+    public interface ICacheItemManager
     {
         Task<IEnumerable<string>> GetKeysAsync(CacheItem cacheItem, CancellationToken cancellationToken = default);
         
