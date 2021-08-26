@@ -2,7 +2,7 @@
 {
     public class CacheManagementMenus
     {
-        public const string Prefix = "EasyAbp.UniappManagement";
+        public const string Prefix = "EasyAbp.CacheManagement";
         
         public const string CacheItem = Prefix + ".CacheItem";
 
