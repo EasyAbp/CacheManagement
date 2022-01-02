@@ -12,15 +12,5 @@ namespace EasyAbp.CacheManagement.CacheItems
         {
             _cacheItemAppService = GetRequiredService<ICacheItemAppService>();
         }
-
-        [Fact]
-        public async Task Test1()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-        }
     }
 }

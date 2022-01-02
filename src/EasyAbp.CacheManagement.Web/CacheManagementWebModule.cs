@@ -12,7 +12,7 @@ using Volo.Abp.VirtualFileSystem;
 namespace EasyAbp.CacheManagement.Web
 {
     [DependsOn(
-        typeof(CacheManagementHttpApiModule),
+        typeof(CacheManagementApplicationContractsModule),
         typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpAutoMapperModule)
         )]

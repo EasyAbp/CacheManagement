@@ -66,7 +66,7 @@ namespace EasyAbp.CacheManagement
             {
                 httpClient.SetBearerToken(accessToken);
 
-                var url = _configuration["RemoteServices:CacheManagement:BaseUrl"] +
+                var url = _configuration["RemoteServices:EasyAbpCacheManagement:BaseUrl"] +
                           "api/CacheManagement/sample/authorized";
 
                 var responseMessage = await httpClient.GetAsync(url);
@@ -127,7 +127,7 @@ namespace EasyAbp.CacheManagement
             {
                 httpClient.SetBearerToken(tokenResponse.AccessToken);
 
-                var url = _configuration["RemoteServices:CacheManagement:BaseUrl"] +
+                var url = _configuration["RemoteServices:EasyAbpCacheManagement:BaseUrl"] +
                           "api/CacheManagement/sample/authorized";
 
                 var responseMessage = await httpClient.GetAsync(url);

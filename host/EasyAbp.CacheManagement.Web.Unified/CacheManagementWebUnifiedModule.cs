@@ -32,6 +32,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
+using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.Swashbuckle;
@@ -46,6 +47,7 @@ namespace EasyAbp.CacheManagement
     [DependsOn(
         typeof(CacheManagementWebModule),
         typeof(CacheManagementApplicationModule),
+        typeof(CacheManagementHttpApiModule),
         typeof(CacheManagementEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpAutofacModule),
@@ -55,15 +57,19 @@ namespace EasyAbp.CacheManagement
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementApplicationModule),
+        typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpIdentityApplicationModule),
+        typeof(AbpIdentityHttpApiModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementDomainIdentityModule),
         typeof(AbpFeatureManagementApplicationModule),
+        typeof(AbpFeatureManagementHttpApiModule),
         typeof(AbpFeatureManagementEntityFrameworkCoreModule),
         typeof(AbpFeatureManagementWebModule),
         typeof(AbpTenantManagementWebModule),
         typeof(AbpTenantManagementApplicationModule),
+        typeof(AbpTenantManagementHttpApiModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreSerilogModule),

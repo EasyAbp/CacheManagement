@@ -7,7 +7,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace EasyAbp.CacheManagement.CacheItems
 {
-    [RemoteService(Name = "EasyAbpCacheManagement")]
+    [RemoteService(Name = CacheManagementRemoteServiceConsts.RemoteServiceName)]
     [Route("/api/cache-management/cache-item")]
     public class CacheItemController : CacheManagementController, ICacheItemAppService
     {
@@ -20,68 +20,68 @@ namespace EasyAbp.CacheManagement.CacheItems
 
         [HttpGet]
         [Route("{id}")]
-        public Task<CacheItemDto> GetAsync(Guid id)
+        public virtual Task<CacheItemDto> GetAsync(Guid id)
         {
             return _service.GetAsync(id);
         }
 
         [HttpGet]
-        public Task<PagedResultDto<CacheItemDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        public virtual Task<PagedResultDto<CacheItemDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             return _service.GetListAsync(input);
         }
 
         [HttpPost]
-        public Task<CacheItemDto> CreateAsync(CreateUpdateCacheItemDto input)
+        public virtual Task<CacheItemDto> CreateAsync(CreateUpdateCacheItemDto input)
         {
             return _service.CreateAsync(input);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public Task<CacheItemDto> UpdateAsync(Guid id, CreateUpdateCacheItemDto input)
+        public virtual Task<CacheItemDto> UpdateAsync(Guid id, CreateUpdateCacheItemDto input)
         {
             return _service.UpdateAsync(id, input);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public Task DeleteAsync(Guid id)
+        public virtual Task DeleteAsync(Guid id)
         {
             return _service.DeleteAsync(id);
         }
 
         [HttpGet]
         [Route("keys/{id}")]
-        public Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid id)
+        public virtual Task<ListResultDto<CacheItemDataDto>> GetKeysAsync(Guid id)
         {
             return _service.GetKeysAsync(id);
         }
 
         [HttpGet]
         [Route("data/{id}/{cacheKey}")]
-        public Task<CacheItemDataDto> GetDataAsync(Guid id, string cacheKey)
+        public virtual Task<CacheItemDataDto> GetDataAsync(Guid id, string cacheKey)
         {
             return _service.GetDataAsync(id, cacheKey);
         }
 
         [HttpPost]
         [Route("clear/{id}/{cacheKey}")]
-        public Task ClearByKeyAsync(Guid id, string cacheKey)
+        public virtual Task ClearByKeyAsync(Guid id, string cacheKey)
         {
             return _service.ClearByKeyAsync(id, cacheKey);
         }
 
         [HttpPost]
         [Route("clear/{id}")]
-        public Task ClearAsync(Guid id)
+        public virtual Task ClearAsync(Guid id)
         {
             return _service.ClearAsync(id);
         }
 
         [HttpPost]
         [Route("clear/all")]
-        public Task ClearAllAsync()
+        public virtual Task ClearAllAsync()
         {
             return _service.ClearAllAsync();
         }

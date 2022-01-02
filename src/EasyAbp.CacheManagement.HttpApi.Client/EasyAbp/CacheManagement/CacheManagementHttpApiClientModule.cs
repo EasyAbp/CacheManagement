@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Http.Client;
 using Volo.Abp.Modularity;
+using Volo.Abp.VirtualFileSystem;
 
 namespace EasyAbp.CacheManagement
 {
@@ -9,7 +10,7 @@ namespace EasyAbp.CacheManagement
         typeof(AbpHttpClientModule))]
     public class CacheManagementHttpApiClientModule : AbpModule
     {
-        public const string RemoteServiceName = "EasyAbpCacheManagement";
+        public const string RemoteServiceName = CacheManagementRemoteServiceConsts.RemoteServiceName;
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
@@ -17,6 +18,11 @@ namespace EasyAbp.CacheManagement
                 typeof(CacheManagementApplicationContractsModule).Assembly,
                 RemoteServiceName
             );
+            
+            Configure<AbpVirtualFileSystemOptions>(options =>
+            {
+                options.FileSets.AddEmbedded<CacheManagementApplicationContractsModule>();
+            });
         }
     }
 }

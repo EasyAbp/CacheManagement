@@ -17,11 +17,5 @@ namespace EasyAbp.CacheManagement.Samples
         {
             //_sampleRepository = GetRequiredService<ISampleRepository>();
         }
-
-        [Fact]
-        public async Task Method1Async()
-        {
-
-        }
     }
 }
