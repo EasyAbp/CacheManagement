@@ -20,18 +20,19 @@ namespace EasyAbp.CacheManagement.Web.Menus
         {
             var l = context.GetLocalizer<CacheManagementResource>();
 
-            var cacheManagementMenuItem = new ApplicationMenuItem(CacheManagementMenus.Prefix, l["Menu:CacheManagement"]);
-            
+            var cacheManagementMenuItem = new ApplicationMenuItem(CacheManagementMenus.Prefix,
+                l["Menu:CacheManagement"], icon: "fa fa-memory");
+
             if (await context.IsGrantedAsync(CacheManagementPermissions.CacheItems.Default))
             {
-                cacheManagementMenuItem.AddItem(
-                    new ApplicationMenuItem(CacheManagementMenus.CacheItem, l["Menu:CacheItem"], "/CacheManagement/CacheItems/CacheItem")
+                cacheManagementMenuItem.AddItem(new ApplicationMenuItem(CacheManagementMenus.CacheItem,
+                    l["Menu:CacheItem"], "/CacheManagement/CacheItems/CacheItem")
                 );
             }
 
             if (!cacheManagementMenuItem.Items.IsNullOrEmpty())
             {
-                context.Menu.Items.Add(cacheManagementMenuItem);
+                context.Menu.GetAdministration().Items.Add(cacheManagementMenuItem);
             }
         }
     }
