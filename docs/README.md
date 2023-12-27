@@ -8,10 +8,6 @@
 
 An abp application module helps administrators to manage the app cache data.
 
-## Online Demo
-
-We have launched an online demo for this module: [https://cache.samples.easyabp.io](https://cache.samples.easyabp.io)
-
 ## Installation
 
 1. Install the following NuGet packages. ([see how](https://github.com/EasyAbp/EasyAbpGuide/blob/master/docs/How-To.md#add-nuget-packages))
