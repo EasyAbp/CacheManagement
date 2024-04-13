@@ -146,7 +146,7 @@ namespace EasyAbp.CacheManagement
 
         private void ConfigureConventionalControllers()
         {
-            Configure<AbpAspNetCoreMvcOptions>(options =>
+            PreConfigure<AbpAspNetCoreMvcOptions>(options =>
             {
             });
         }
