@@ -9,8 +9,9 @@
 @inject IAuthorizationService Authorization
 @inject IPageLayout PageLayout
 @{
-    PageLayout.Content.Title = L["CacheItemData"].Value;
+    PageLayout.Content.Title = L["CacheItemData"].Value + " - " + Model.CacheItem.DisplayName;
     PageLayout.Content.BreadCrumb.Add(L["Menu:CacheItem"].Value);
+    PageLayout.Content.BreadCrumb.Add(L["Menu:CacheManagement"].Value);
     PageLayout.Content.MenuItemName = "EasyAbpCacheManagementCacheItem";
 }
 
@@ -22,27 +23,22 @@
 {
     <abp-style src="/Pages/CacheManagement/CacheItems/CacheItem/keyList.css"/>
 }
+@section content_toolbar
+{
+    @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheItems.ClearCache))
+    {
+        <abp-button id="ClearAllCacheButton"
+                    text="@L["ClearAllCache"].Value"
+                    size="Small"
+                    button-type="Danger"/>
+    }
+}
 
 <script>
     let id = '@Model.CacheItem.Id'
 </script>
 
 <abp-card>
-    <abp-card-header>
-        <abp-row>
-            <abp-column size-md="_6">
-                <abp-card-title>@L["CacheItemData"] - @Model.CacheItem.DisplayName</abp-card-title>
-            </abp-column>
-            <abp-column size-md="_6" class="text-end">
-                @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheItems.ClearCache))
-                {
-                    <abp-button id="ClearAllCacheButton"
-                                text="@L["ClearAllCache"].Value"
-                                button-type="Danger"/>
-                }
-            </abp-column>
-        </abp-row>
-    </abp-card-header>
     <abp-card-body>
         <abp-table striped-rows="true" id="CacheItemTable" class="nowrap">
             <thead>
