@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyAbp.CacheManagement.Authorization;
 using EasyAbp.CacheManagement.CacheItems.Dtos;
+using EasyAbp.CacheManagement.Localization;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -27,6 +28,9 @@ namespace EasyAbp.CacheManagement.CacheItems
             ICacheItemRepository repository) : base(repository)
         {
             _cacheItemManager = cacheItemManager;
+
+            LocalizationResource = typeof(CacheManagementResource);
+            ObjectMapperContext = typeof(CacheManagementApplicationModule);
         }
 
         protected override async Task<CacheItem> GetEntityByIdAsync(Guid id)

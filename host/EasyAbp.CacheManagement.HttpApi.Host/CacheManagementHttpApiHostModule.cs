@@ -148,8 +148,8 @@ namespace EasyAbp.CacheManagement
             }
             app.UseHttpsRedirection();
             app.UseCorrelationId();
-            app.MapAbpStaticAssets();
             app.UseRouting();
+            app.MapAbpStaticAssets();
             app.UseCors(DefaultCorsPolicyName);
             app.UseAuthentication();
             if (MultiTenancyConsts.IsEnabled)

@@ -166,8 +166,8 @@ namespace EasyAbp.CacheManagement
             }
 
             app.UseHttpsRedirection();
-            app.MapAbpStaticAssets();
             app.UseRouting();
+            app.MapAbpStaticAssets();
             app.UseAuthentication();
             app.UseAuthorization();
             if (MultiTenancyConsts.IsEnabled)
