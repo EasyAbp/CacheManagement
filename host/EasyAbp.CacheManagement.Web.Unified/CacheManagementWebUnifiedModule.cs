@@ -7,7 +7,7 @@ using EasyAbp.CacheManagement.MultiTenancy;
 using EasyAbp.CacheManagement.Web;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using StackExchange.Redis;
 using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
