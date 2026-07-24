@@ -33,6 +33,31 @@ namespace EasyAbp.CacheManagement.CacheItems
             ObjectMapperContext = typeof(CacheManagementApplicationModule);
         }
 
+        protected override Task<CacheItem> MapToEntityAsync(CreateUpdateCacheItemDto createInput)
+        {
+            var entity = new CacheItem(
+                GuidGenerator.Create(),
+                createInput.CacheName,
+                createInput.DisplayName,
+                createInput.Description,
+                createInput.IgnoreMultiTenancy,
+                createInput.TenantAllowed);
+
+            return Task.FromResult(entity);
+        }
+
+        protected override Task MapToEntityAsync(CreateUpdateCacheItemDto updateInput, CacheItem entity)
+        {
+            entity.Update(
+                updateInput.CacheName,
+                updateInput.DisplayName,
+                updateInput.Description,
+                updateInput.IgnoreMultiTenancy,
+                updateInput.TenantAllowed);
+
+            return Task.CompletedTask;
+        }
+
         protected override async Task<CacheItem> GetEntityByIdAsync(Guid id)
         {
             var cacheItem = await base.GetEntityByIdAsync(id);

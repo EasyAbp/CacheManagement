@@ -38,5 +38,19 @@ namespace EasyAbp.CacheManagement.CacheItems
             IgnoreMultiTenancy = ignoreMultiTenancy;
             TenantAllowed = tenantAllowed;
         }
+
+        public void Update(
+            [NotNull] string cacheName,
+            [NotNull] string displayName,
+            [CanBeNull] string description,
+            bool ignoreMultiTenancy,
+            bool tenantAllowed)
+        {
+            CacheName = cacheName;
+            DisplayName = displayName;
+            Description = description;
+            IgnoreMultiTenancy = ignoreMultiTenancy;
+            TenantAllowed = tenantAllowed;
+        }
     }
 }
